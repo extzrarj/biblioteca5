@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title>Detalhes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            nav {
+                background-color: #8B0000;
+            }
+            nav a {
+                color: white !important;
+                text-decoration: none;
+                margin-right: 15px;
+            }
+            nav a:hover {
+                color: #FFD700;
+            }
+
+            body.dark-mode {
+                background-color: #121212;
+                color: white;
+            }
+
+            body.dark-mode nav {
+                background-color: #333;
+            }
+
+            body.dark-mode .btn {
+                background-color: #444;
+                color: white;
+            }
+
+            body.dark-mode a {
+                color: #FFD700 !important;
+            }
+
+            .theme-toggle-btn {
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                z-index: 1000;
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="nav"> 
+            <img th:src="@{/images/camera2.png}" width="400px">
+            <a th:href="@{/listagem-filme}">Filmes</a> 
+            <a th:href="@{/tela-inicio}">Tela Inicial</a> 
+            <a th:href="@{/cadastro-filme}">Cadastro de Filmes</a> 
+        </nav>
+
+        <h1>Detalhes dos Filmes</h1>
+        <p>Id: <span th:text="${filme.id}"></span></p>
+        <p>Nome do Filme: <span th:text="${filme.nome}"></span></p>
+        <p>Gênero: <span th:text="${filme.genero}"></span></p>
+        <p>Ano de Lançamento: <span th:text="${filme.anoLancamento}"></span></p>
+        <p>Sinopse: <span th:text="${filme.sinopse}"></span></p>
+
+        <form th:action="@{/guardar-analise}" method="POST" th:object="${analise}">
+            <div>
+                <p>Escreva a sua análise sobre o filme:</p>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="${analise.analiseA}"></textarea>                     
+                <input type="hidden" th:field="${filme.id}"/>
+            </div>
+            <div>
+                <p>Nota:</p>
+                <input type="number" th:field="${analise.nota}" min="0" max="10" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-warning">Enviar</button>
+        </form>
+
+        <hr>
+        <h3>Análises</h3>
+        <ul>
+            <li th:each="aval : ${analiseE}">
+                <p>Análise: <span th:text="${aval.analiseA}"></span></p>
+                <p>Nota: <span th:text="${aval.nota}"></span></p>
+                <a th:href="@{'/excluir-analise?id='+${aval.id}}" class="btn btn-danger">Excluir</a>
+            </li>
+        </ul>
+
+        <button onclick="alternarTema()" class="theme-toggle-btn">Alternar Tema</button>
+
+        <script>
+            function alternarTema() {
+                const body = document.body;
+                body.classList.toggle('dark-mode');
+                document.cookie = "tema=" + (body.classList.contains('dark-mode') ? "escuro" : "claro") + "; path=/";
+            }
+
+            function aplicarTema() {
+                const temaCookie = document.cookie.split('; ').find(row => row.startsWith('tema='));
+                const tema = temaCookie ? temaCookie.split('=')[1] : null;
+                if (tema === "escuro") {
+                    document.body.classList.add('dark-mode');
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", aplicarTema);
+        </script>
+
+    </body>
+</html>
