@@ -37,7 +37,10 @@ public class Livro {
 
     @Size(max = 500, message = "A sinopse não pode exceder 500 caracteres.")
     private String sinopse;
+    
+    @NotBlank(message = "O autor do livro não pode estar vazio.")
+    private String autor;
 
     @OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
-    private List<Analise> analises;
+    private List<Aluguel> alugueis;
 }

@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Analise {
+public class Aluguel{
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer id;

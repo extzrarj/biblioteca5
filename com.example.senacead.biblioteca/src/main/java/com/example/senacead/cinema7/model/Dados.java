@@ -5,78 +5,79 @@ import java.util.List;
 
 public class Dados {
 
-    private static List<Filme> listaFilmes = new ArrayList();
-    private static List<Analise> listaAnalises = new ArrayList();
+    private static List<Livro> listaLivros = new ArrayList();
+    private static List<Aluguel> listaAlugueis = new ArrayList();
 
-    public static void adicionarFilme(Filme filme) {
-        filme.setId(listaFilmes.size() + 1);
-        listaFilmes.add(filme);
+    public static void adicionarLivro(Livro livro) {
+        livro.setId(listaLivros.size() + 1);
+        listaLivros.add(livro);
     }
 
-    public static List<Filme> listarFilmes() {
+    public static List<Livro> listarLivros() {
         /**
          * refatoração de código, cpodigos da controller estão sendo adaptados
          * para a lista de Dados*
          */
-        return listaFilmes;
+        return listaLivros;
     }
 
-    public static void excluirFilme(Integer id) {
-        for (Filme f : listaFilmes) {
+    public static void excluirLivro(Integer id) {
+        for (Livro f : listaLivros) {
             if (f.getId() == id) {
-                listaFilmes.remove(f);
+                listaLivros.remove(f);
                 break;
             }
         }
     }
 
-    public static Filme obtemFilme(Integer id) {
-        Filme filmeEncontrado = new Filme();
-        for (Filme f : listaFilmes) {
-            if (f.getId() == id) {
-                filmeEncontrado = f;
+    public static Livro obtemLivro(Integer id) {
+        Livro livroEncontrado = new Livro();
+        for (Livro l : listaLivros) {
+            if (l.getId() == id) {
+                livroEncontrado = l;
                 break;
             }
         }
 
-        return filmeEncontrado;
+        return livroEncontrado;
     }
 
-    public static void atualizarFilme(Filme filme) {
-        for (Filme f : listaFilmes) {
-            if (f.getId() == filme.getId()) {
-                f.setNome(filme.getNome());
-                f.setGenero(filme.getGenero());
-                f.setSinopse(filme.getSinopse());
-                f.setAnoLancamento(filme.getAnoLancamento());
+    public static void atualizarFilme(Livro livro) {
+        for (Livro l : listaLivros) {
+            if (l.getId() == livro.getId()) {
+                l.setNome(livro.getNome());
+                l.setGenero(livro.getGenero());
+                l.setSinopse(livro.getSinopse());
+                l.setAnoLancamento(livro.getAnoLancamento());
+                l.setAutor(livro.getAutor());
                 break;
             }
         }
 
     }
     
-      public static void adicionarAnalise(Analise analise, Filme filme) {
-        analise.setId(listaAnalises.size() + 1);
-        analise.setFilme(filme);
-        listaAnalises.add(analise);
+      public static void adicionarAluguel(Aluguel aluguel, Livro livro) {
+        aluguel.setId(listaAlugueis.size() + 1);
+        aluguel.setLivro(livro);
+        listaAlugueis.add(aluguel);
     }
       
-       public static void excluirAnalise(Integer id) {
-        for (Analise a : listaAnalises) {
+       public static void excluirAluguel(Integer id) {
+        for (Aluguel a : listaAlugueis) {
             if (a.getId() == id) {
-                listaAnalises.remove(a);
+                listaAlugueis.remove(a);
                 break;
             }
         }
     }
        
-       public static List<Analise> listaAnalises(Integer idFilme){
-           List<Analise> analiseEncontrada = new ArrayList();
-           for (Analise a : listaAnalises){
-               if(a.getFilme().getId() == idFilme){
-                   analiseEncontrada.add(a);
+       public static List<Aluguel> listaAlugueis(Integer idLivro){
+           List<Aluguel> aluguelEncontrada = new ArrayList();
+           for (Aluguel a : listaAlugueis){
+               if(a.getLivro().getId() == idLivro){
+                   aluguelEncontrada.add(a);
                }
            }
-           return analiseEncontrada;
+           return aluguelEncontrada;
        }
 }
