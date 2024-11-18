@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,10 +23,15 @@ public class Analise {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_filme") // referência à coluna id_filme na tabela de analises
-    private Filme filme;
-    private String analiseA;
-    private int nota;
+    @JoinColumn(name = "id_livro") // referência à coluna id_filme na tabela de analises
+    private Livro livro;
+    private String nome;
+    private LocalDate dataAluguel;
+    private LocalDate dataDevolucao;
+    private String pagamento;
+    private int valor;
+ 
+    
     
 }
 
