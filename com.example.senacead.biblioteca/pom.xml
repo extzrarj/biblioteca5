@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example.senacead</groupId>
-    <artifactId>cinema7</artifactId>
+    <artifactId>biblioteca5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cinema8</name>
+    <name>biblioteca5</name>
     <description>ATV 1</description>
     <packaging>war</packaging> 
     <url/>

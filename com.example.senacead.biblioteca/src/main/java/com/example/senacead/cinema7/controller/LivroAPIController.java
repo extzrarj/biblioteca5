@@ -1,7 +1,7 @@
 package com.example.senacead.cinema7.controller;
 
-import com.example.senacead.cinema7.model.Filme;
-import com.example.senacead.cinema7.service.FilmeService;
+import com.example.senacead.cinema7.model.Livro;
+import com.example.senacead.cinema7.service.LivroService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,39 +20,39 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/filme")
-public class FilmeAPIController {
+@RequestMapping("/livro")
+public class LivroAPIController {
 
     @Autowired
-    FilmeService filmeService;
+    LivroService livroService;
 
     @GetMapping("buscar/{id}")
-    public ResponseEntity<Filme> pesquisar(@PathVariable Integer id) {
-        Filme filmeEncontrado = filmeService.buscarPorId(id);
-        return new ResponseEntity<>(filmeEncontrado, HttpStatus.OK);
+    public ResponseEntity<Livro> pesquisar(@PathVariable Integer id) {
+        Livro LivroEncontrado = livroService.buscarPorId(id);
+        return new ResponseEntity<>(LivroEncontrado, HttpStatus.OK);
     }
 
     @PostMapping("/adicionar")
-    public ResponseEntity<Filme> criar(@RequestBody Filme filme) {
-        Filme novoFilme = filmeService.criarFilme(filme);
-        return new ResponseEntity<>(novoFilme, HttpStatus.CREATED);
+    public ResponseEntity<Livro> criar(@RequestBody Livro livro) {
+        Livro novoLivro = livroService.criarLivro(livro);
+        return new ResponseEntity<>(novoLivro, HttpStatus.CREATED);
     }
 
     @GetMapping("listar-todos")
     public ResponseEntity<List> listar() {
-        List<Filme> filmeLista = filmeService.listarTodos();
-        return new ResponseEntity<>(filmeLista, HttpStatus.OK);
+        List<Livro> livroLista = livroService.listarTodos();
+        return new ResponseEntity<>(livroLista, HttpStatus.OK);
     }
 
     @PutMapping("/atualizar/{id}")
-     public ResponseEntity<Filme> atualizar (@RequestBody Filme filme , @PathVariable Integer id) {
-        Filme filmeAtualizado = filmeService.atualizar(id, filme);
-         return new ResponseEntity<>(filmeAtualizado, HttpStatus.OK);
+     public ResponseEntity<Livro> atualizar (@RequestBody Livro livro , @PathVariable Integer id) {
+        Livro livroAtualizado = livroService.atualizar(id, livro);
+         return new ResponseEntity<>(livroAtualizado, HttpStatus.OK);
     }
 
     @DeleteMapping ("/excluir/{id}") 
      public ResponseEntity <?> excluir(@PathVariable Integer id) {
-         filmeService.excluir(id);
+         livroService.excluir(id);
          return new ResponseEntity<>(HttpStatus.OK);
      }
      

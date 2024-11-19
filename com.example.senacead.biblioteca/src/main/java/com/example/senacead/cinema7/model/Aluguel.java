@@ -13,25 +13,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name ="analise")
-@Entity //tabela do banco de dados, que irá criar uma tabela no myswl com todos as infos
+@Table(name = "aluguel")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Aluguel{
+public class Aluguel {
+
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_livro") // referência à coluna id_filme na tabela de analises
+    @JoinColumn(name = "id_livro", nullable = false) 
     private Livro livro;
-    private String nome;
+
+    private String nome; 
     private LocalDate dataAluguel;
     private LocalDate dataDevolucao;
-    private String pagamento;
-    private int valor;
- 
-    
-    
+    private String pagamento; 
+    private int valor; 
 }
 
