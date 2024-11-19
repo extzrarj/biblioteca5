@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Funcionário</title>
+</head>
+<body>
+    <h1>Cadastrar Funcionário</h1>
+
+    <form th:action="@{/guardar-funcionario}" th:object="${funcionario}" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" th:field="*{senha}" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <div th:if="${erro}" style="color:red;">
+        <p th:text="${erro}"></p>
+    </div>
+
+    <button onclick="window.location.href='/login-funcionario'">Já possui cadastro?</button>
+</body>
+</html>
