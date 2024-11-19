@@ -20,7 +20,7 @@ public class ControllerFuncionario {
     @GetMapping("/cadastro-funcionario")
     public String mostrarFormularioCadastro(Model model) {
         model.addAttribute("funcionario", new Funcionario());
-        return "cadastroFuncionario"; 
+        return "cadastroFuncionario";
     }
 
     @PostMapping("/guardar-funcionario")
@@ -42,7 +42,7 @@ public class ControllerFuncionario {
     @GetMapping("/login-funcionario")
     public String mostrarFormularioLogin(Model model) {
         model.addAttribute("funcionario", new Funcionario());
-        return "loginFuncionario"; 
+        return "loginFuncionario";
     }
 
     @PostMapping("/autenticar-funcionario")
@@ -54,7 +54,6 @@ public class ControllerFuncionario {
             return "loginFuncionario";
         }
 
-        return "redirect:/tela-inicio"; 
+        return "redirect:/tela-inicio";
     }
 }
-

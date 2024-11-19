@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Funcionario {
     private String nome;
 
     @Column(nullable = false)
+    @Size(min = 6, message = "A senha deve ter pelo menos 6 caracteres")
     private String senha;
 }
 

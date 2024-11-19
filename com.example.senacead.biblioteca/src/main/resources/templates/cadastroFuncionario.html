@@ -152,7 +152,7 @@
         </style>
     </head>
     <body>
-        
+
         <header>
             <img th:src="@{/images/logo.jpeg}" alt="Logo da Biblioteca">
             <h1>BIBLIOTECA SMERALDO</h1>
@@ -161,20 +161,25 @@
 
         <main>
             <div class="form-container">
-            <h1 class="text-center" th:if="${funcionario.id}">Alterar Funcionário</h1>
-            <h1 class="text-center" th:unless="${funcionario.id}">Cadastrar Funcionário</h1>
+                <h1 class="text-center" th:if="${funcionario.id}">Alterar Funcionário</h1>
+                <h1 class="text-center" th:unless="${funcionario.id}">Cadastrar Funcionário</h1>
 
-            <form th:action="@{/guardar-funcionario}" method="POST" th:object="${funcionario}">
-                <p>Nome: <input type="text" th:field="*{nome}" required /></p>
-                <p>Senha: <input type="password" th:field="*{senha}" required /></p>
-                <p><button type="submit" class="btn btn-primary">Cadastrar</button></p>
-                <p><a href="/login-funcionario" class="btn btn-primary">Se você já é cadastrado</a></p>
+                <form th:action="@{/guardar-funcionario}" method="POST" th:object="${funcionario}">
+                    <p>Nome: <input type="text" th:field="*{nome}" required /></p>
 
-            </form>
+                    <p>Senha: 
+                        <input type="password" th:field="*{senha}" required />
+                        <span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}" class="text-danger"></span>
+                    </p>
 
-            <div th:if="${erro}" class="text-danger text-center mt-3">
-                <p th:text="${erro}"></p>
-            </div>
+                    <p><button type="submit" class="btn btn-primary">Cadastrar</button></p>
+                    <p><a href="/login-funcionario" class="btn btn-primary">Se você já é cadastrado</a></p>
+                </form>
+
+
+                <div th:if="${erro}" class="text-danger text-center mt-3">
+                    <p th:text="${erro}"></p>
+                </div>
             </div>
         </main>
 
