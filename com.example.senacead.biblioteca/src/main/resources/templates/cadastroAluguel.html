@@ -160,6 +160,8 @@
                         </header>
 
                         <div class="sidebar">
+                            <a th:href="@{/listagem-livro}">Listagem de Livros</a>
+                            <a th:href="@{/cadastro-livro}">Cadastro de Livros</a>
                             <a th:href="@{/listagem-aluguel}">Listagem de Aluguéis</a>
                             <a th:href="@{/tela-inicio}">Tela Inicial</a>
                         </div>
@@ -169,20 +171,20 @@
                                 <h1 class="text-center" th:if="${aluguel.id}">Alterar Aluguel</h1>
                                 <h1 class="text-center" th:unless="${aluguel.id}">Cadastrar Aluguel</h1>
 
-                            <form th:action="@{/guardar-aluguel}" method="POST" th:object="${aluguel}">
-                                <p>Nome: <input type="text" th:field="*{nome}" required/></p>
-                                <p>Data de Aluguel: <input type="date" th:field="*{dataAluguel}" required/></p>
-                                <p>Data de Devolução: <input type="date" th:field="*{dataDevolucao}" required/></p>
-                                <p>Pagamento: <input type="text" th:field="*{pagamento}" required/></p>
-                                <p>Valor: <input type="number" th:field="*{valor}" required/></p>
-                                <p>Livro:
-                                    <select th:field="*{livro.id}" required>
-                                        <option th:each="livro : ${livros}" th:value="${livro.id}" th:text="${livro.nome}"></option>
-                                    </select>
-                                </p>
-                                <input type="hidden" th:field="*{id}"/>
-                                <p><button type="submit" class="btn btn-primary">Salvar</button></p>
-                            </form>
+                                <form th:action="@{/guardar-aluguel}" method="POST" th:object="${aluguel}">
+                                    <p>Nome: <input type="text" th:field="*{nome}" required/></p>
+                                    <p>Data de Aluguel: <input type="date" th:field="*{dataAluguel}" required/></p>
+                                    <p>Data de Devolução: <input type="date" th:field="*{dataDevolucao}" required/></p>
+                                    <p>Pagamento: <input type="text" th:field="*{pagamento}" required/></p>
+                                    <p>Valor: <input type="number" th:field="*{valor}" required/></p>
+                                    <p>Livro:
+                                        <select th:field="*{livro.id}" required>
+                                            <option th:each="livro : ${livros}" th:value="${livro.id}" th:text="${livro.nome}"></option>
+                                        </select>
+                                    </p>
+                                    <input type="hidden" th:field="*{id}"/>
+                                    <p><button type="submit" class="btn btn-primary">Salvar</button></p>
+                                </form>
                             </div>
                         </main>
 

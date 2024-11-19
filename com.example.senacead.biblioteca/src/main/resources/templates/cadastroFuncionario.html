@@ -168,6 +168,8 @@
                 <p>Nome: <input type="text" th:field="*{nome}" required /></p>
                 <p>Senha: <input type="password" th:field="*{senha}" required /></p>
                 <p><button type="submit" class="btn btn-primary">Cadastrar</button></p>
+                <p><a href="/login-funcionario" class="btn btn-primary">Se você já é cadastrado</a></p>
+
             </form>
 
             <div th:if="${erro}" class="text-danger text-center mt-3">

@@ -29,7 +29,7 @@ public class ControllerAluguel {
     public String mostraCadastroAluguel(Model model) {
         model.addAttribute("aluguel", new Aluguel());
         model.addAttribute("livros", livroService.listarTodos());
-        return "cadastroAluguel"; // Nome da página Thymeleaf
+        return "cadastroAluguel"; 
     }
 
     @PostMapping("/guardar-aluguel")
